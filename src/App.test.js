@@ -32,7 +32,9 @@ it('renders counter display', () => {
 });
 
 it('couter starts at 0', () => {
-
+  const wrapper = createShallowWrapper();
+  const initialCounterState = wrapper.state('counter');
+  expect(initialCounterState).toBe(0);
 });
 
 it('clicking button increments counter display', () => {
