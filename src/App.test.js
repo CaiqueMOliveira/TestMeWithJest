@@ -13,7 +13,9 @@ it('renders without error', () => {
 });
 
 it('renders increment button', () => {
-
+  const wrapper = shallow(<App />);
+  const counterDisplay = wrapper.find("[data-test='increment-button']");
+  expect(counterDisplay.length).toBe(1);
 });
 
 it('renders counter display', () => {
