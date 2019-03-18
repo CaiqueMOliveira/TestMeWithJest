@@ -23,14 +23,14 @@ it('renders without error', () => {
 
 it('renders increment button', () => {
   const wrapper = createShallowWrapper();
-  const counterDisplay = findWrapperByTestAttribute(wrapper, "increment-button");
-  expect(counterDisplay.length).toBe(1);
+  const incrementButton = findWrapperByTestAttribute(wrapper, "increment-button");
+  expect(incrementButton.length).toBe(1);
 });
 
 it('renders counter display', () => {
   const wrapper = createShallowWrapper();
-  const incrementButton = findWrapperByTestAttribute(wrapper, "counter-display");
-  expect(incrementButton.length).toBe(1);
+  const counterDisplay = findWrapperByTestAttribute(wrapper, "counter-display");
+  expect(counterDisplay.length).toBe(1);
 });
 
 it('couter starts at 0', () => {
@@ -40,5 +40,13 @@ it('couter starts at 0', () => {
 });
 
 it('clicking button increments counter display', () => {
+  const initialCounter = 7;
+  const wrapper = createShallowWrapper(null, { counter: initialCounter });
 
+  const incrementButton = findWrapperByTestAttribute(wrapper, 'increment-button');
+  incrementButton.simulate('click');
+  wrapper.update();
+
+  const counterDisplay = findWrapperByTestAttribute(wrapper, 'counter-display');
+  expect(counterDisplay.text()).toContain(initialCounter + 1);
 });
