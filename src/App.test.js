@@ -6,7 +6,9 @@ import App from './App';
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 const createShallowWrapper = (props = {}, state = null) => {
-  return shallow(<App {...props} />);
+  const wrapper = shallow(<App {...props} />);
+  if (state) wrapper.setState(state);
+  return wrapper;
 };
 
 const findWrapperByTestAttribute = (wrapper, testAttributeValue) => {
