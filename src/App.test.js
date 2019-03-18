@@ -17,7 +17,9 @@ it('renders increment button', () => {
 });
 
 it('renders counter display', () => {
-
+  const wrapper = shallow(<App />);
+  const incrementButton = wrapper.find("[data-test='counter-display']");
+  expect(incrementButton.length).toBe(1);
 });
 
 it('couter starts at 0', () => {
