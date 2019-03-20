@@ -13,6 +13,12 @@ class App extends React.Component {
     }));
   }
 
+  handleDecrementCounter = () => {
+    this.setState(state => ({
+      counter: state.counter - 1
+    }));
+  }
+
   render() {
     const { counter } = this.state;
 
@@ -23,7 +29,8 @@ class App extends React.Component {
           onClick={this.handleIncrementCounter}>
           Increment counter
         </button>
-        <button data-test="decrement-button">
+        <button data-test="decrement-button"
+          onClick={this.handleDecrementCounter}>
           Decrement button
         </button>
       </div>

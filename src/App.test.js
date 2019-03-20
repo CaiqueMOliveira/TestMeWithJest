@@ -57,3 +57,14 @@ it('should render decrement button', () => {
   expect(decrementButton.length).toBe(1);
 });
 
+it('should decrement the counter on clicking', () => {
+  const initialCounter = 3;
+  const wrapper = createShallowWrapper(null, { counter: initialCounter });
+  const decrementButton = findWrapperByTestAttribute(wrapper, 'decrement-button');
+  decrementButton.simulate('click');
+  wrapper.update();
+
+  const counterDisplay = findWrapperByTestAttribute(wrapper, 'counter-display');
+  expect(counterDisplay.text()).toContain(initialCounter - 1);
+});
+
