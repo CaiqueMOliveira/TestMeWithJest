@@ -7,7 +7,7 @@ class App extends React.Component {
     counter: 0
   };
 
-  handleOnClick = () => {
+  handleIncrementCounter = () => {
     this.setState(state => ({
       counter: state.counter + 1
     }));
@@ -20,8 +20,11 @@ class App extends React.Component {
       <div data-test="component-app">
         <h1 data-test="counter-display">The counter is currently {counter}</h1>
         <button data-test="increment-button"
-          onClick={this.handleOnClick}>
+          onClick={this.handleIncrementCounter}>
           Increment counter
+        </button>
+        <button data-test="decrement-button">
+          Decrement button
         </button>
       </div>
     );

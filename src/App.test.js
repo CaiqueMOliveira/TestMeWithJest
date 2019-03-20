@@ -50,3 +50,10 @@ it('clicking button increments counter display', () => {
   const counterDisplay = findWrapperByTestAttribute(wrapper, 'counter-display');
   expect(counterDisplay.text()).toContain(initialCounter + 1);
 });
+
+it('should render decrement button', () => {
+  const wrapper = createShallowWrapper();
+  const decrementButton = findWrapperByTestAttribute(wrapper, 'decrement-button');
+  expect(decrementButton.length).toBe(1);
+});
+
