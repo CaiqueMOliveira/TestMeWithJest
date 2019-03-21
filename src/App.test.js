@@ -68,3 +68,9 @@ it('should decrement the counter on clicking', () => {
   expect(counterDisplay.text()).toContain(initialCounter - 1);
 });
 
+it('should render the error display', () => {
+  const wrapper = createShallowWrapper();
+  const errorDisplay = findWrapperByTestAttribute(wrapper, 'error-display');
+  expect(errorDisplay.length).toBe(1);
+});
+

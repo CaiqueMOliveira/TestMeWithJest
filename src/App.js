@@ -25,6 +25,7 @@ class App extends React.Component {
     return (
       <div data-test="component-app">
         <h1 data-test="counter-display">The counter is currently {counter}</h1>
+        <h2 data-test="error-display"></h2>
         <button data-test="increment-button"
           onClick={this.handleIncrementCounter}>
           Increment counter
