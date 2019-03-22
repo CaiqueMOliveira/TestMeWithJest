@@ -108,3 +108,21 @@ it('should clear the decrement error message on click of increment button', () =
   const errorDisplay = findWrapperByTestAttribute(wrapper, 'error-display');
   expect(errorDisplay.text().length).toBe(0);
 });
+
+it('should increment as usual after disappear the decrement error message', () => {
+  const initialCounter = 0;
+  const errorMessage = 'The counter can\'t go below zero';
+
+  const wrapper = createShallowWrapper(null, {
+    errorMessage,
+    counter: initialCounter
+  });
+
+  const incrementButton = findWrapperByTestAttribute(wrapper, 'increment-button');
+  incrementButton.simulate('click');
+
+  wrapper.update();
+
+  const counterDisplay = findWrapperByTestAttribute(wrapper, 'counter-display');
+  expect(counterDisplay.text()).toContain(initialCounter + 1);
+});
