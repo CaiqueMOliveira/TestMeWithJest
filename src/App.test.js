@@ -86,3 +86,14 @@ it('should render the error display', () => {
   expect(errorDisplay.length).toBe(1);
 });
 
+it('should show a error message on try to decrement below zero', () => {
+  const initialCounter = 0;
+  const wrapper = createShallowWrapper(null, { counter: initialCounter });
+  const decrementButton = findWrapperByTestAttribute(wrapper, 'decrement-button');
+  decrementButton.simulate('click');
+
+  wrapper.update();
+  const errorDisplay = findWrapperByTestAttribute(wrapper, 'error-display');
+  expect(errorDisplay.text().length).toBeGreaterThan(0);
+});
+

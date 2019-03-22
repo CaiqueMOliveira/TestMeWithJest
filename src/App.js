@@ -4,7 +4,8 @@ import './App.css';
 class App extends React.Component {
 
   state = {
-    counter: 0
+    counter: 0,
+    errorMessage: ''
   };
 
   handleIncrementCounter = () => {
@@ -15,19 +16,26 @@ class App extends React.Component {
 
   handleDecrementCounter = () => {
     const { counter } = this.state;
-    if (!counter) return;
+
+    if (!counter) {
+      this.setState({
+        errorMessage: 'The counter can\'t go below zero'
+      });
+      return;
+    }
+
     this.setState({
       counter: counter - 1
     });
   }
 
   render() {
-    const { counter } = this.state;
+    const { counter, errorMessage } = this.state;
 
     return (
       <div data-test="component-app">
         <h1 data-test="counter-display">The counter is currently {counter}</h1>
-        <h2 data-test="error-display"></h2>
+        <h2 data-test="error-display">{errorMessage}</h2>
         <button data-test="increment-button"
           onClick={this.handleIncrementCounter}>
           Increment counter
