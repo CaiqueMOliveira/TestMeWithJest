@@ -68,6 +68,18 @@ it('should decrement the counter on clicking', () => {
   expect(counterDisplay.text()).toContain(initialCounter - 1);
 });
 
+it('shouldn\'t decrement below 0', () => {
+  const initialCounter = 0;
+  const wrapper = createShallowWrapper(null, { counter: initialCounter });
+  const decrementButton = findWrapperByTestAttribute(wrapper, 'decrement-button');
+  decrementButton.simulate('click');
+
+  wrapper.update();
+
+  const counterDisplay = findWrapperByTestAttribute(wrapper, 'counter-display');
+  expect(counterDisplay.text()).toContain(0);
+});
+
 it('should render the error display', () => {
   const wrapper = createShallowWrapper();
   const errorDisplay = findWrapperByTestAttribute(wrapper, 'error-display');

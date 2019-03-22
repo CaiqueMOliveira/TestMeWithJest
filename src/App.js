@@ -14,9 +14,11 @@ class App extends React.Component {
   }
 
   handleDecrementCounter = () => {
-    this.setState(state => ({
-      counter: state.counter - 1
-    }));
+    const { counter } = this.state;
+    if (!counter) return;
+    this.setState({
+      counter: counter - 1
+    });
   }
 
   render() {
