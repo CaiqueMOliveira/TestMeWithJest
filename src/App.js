@@ -9,9 +9,11 @@ class App extends React.Component {
   };
 
   handleIncrementCounter = () => {
-    this.setState(state => ({
-      counter: state.counter + 1
-    }));
+    const { counter, errorMessage } = this.state;
+    this.setState({
+      counter: counter + 1,
+      errorMessage: counter ? errorMessage : ''
+    });
   }
 
   handleDecrementCounter = () => {
@@ -34,13 +36,25 @@ class App extends React.Component {
 
     return (
       <div data-test="component-app">
-        <h1 data-test="counter-display">The counter is currently {counter}</h1>
-        <h2 data-test="error-display">{errorMessage}</h2>
-        <button data-test="increment-button"
+        <h1
+          data-test="counter-display">
+          The counter is currently {counter}
+        </h1>
+
+        <h2
+          style={{ color: '#ff0000' }}
+          data-test="error-display" >
+          {errorMessage}
+        </h2>
+
+        <button
+          data-test="increment-button"
           onClick={this.handleIncrementCounter}>
           Increment counter
         </button>
-        <button data-test="decrement-button"
+
+        <button
+          data-test="decrement-button"
           onClick={this.handleDecrementCounter}>
           Decrement button
         </button>

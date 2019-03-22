@@ -97,3 +97,14 @@ it('should show a error message on try to decrement below zero', () => {
   expect(errorDisplay.text().length).toBeGreaterThan(0);
 });
 
+it('should clear the decrement error message on click of increment button', () => {
+  const errorMessage = 'The counter can\'t go below zero';
+  const wrapper = createShallowWrapper(null, { errorMessage });
+  const incrementButton = findWrapperByTestAttribute(wrapper, 'increment-button');
+  incrementButton.simulate('click');
+
+  wrapper.update();
+
+  const errorDisplay = findWrapperByTestAttribute(wrapper, 'error-display');
+  expect(errorDisplay.text().length).toBe(0);
+});
